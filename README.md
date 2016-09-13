@@ -7,8 +7,11 @@ This app's intention is to address this [Problem Statement](http://devblog.back2
 The UI has been roughed out and the pics below are intended as a guide only.
 
 ![main app](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/attenApp_Main.jpg)
+*Good work Joe!*
 
 ![modal confirmation](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/attenApp_Modal.jpg)
+*I'm not sure if we have any fat cat volunteers*
+
 ## Check-in Confirmation assumptions
 - Attendance is based on an honour system. No one really needs to sign in or out so ...
 - Attendance is more of a check in process
@@ -16,3 +19,4 @@ The UI has been roughed out and the pics below are intended as a guide only.
 
 #### For some reason github displays this horizontally not vertically ...
 ![the picture](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/attenApp_bigPicture.jpg)
+It's because the orientation of the image is stored in the meta data, and github is respecting that :)
