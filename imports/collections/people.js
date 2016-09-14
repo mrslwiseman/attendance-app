@@ -2,6 +2,7 @@
    SimpleSchema */
 
 import { Mongo } from 'meteor/mongo';
+import * as sg from 'sugar';              // sugar utility
 
 const People = new Mongo.Collection('people');
 
@@ -48,5 +49,30 @@ People.attachSchema(new SimpleSchema({
     optional: false
   },
 }));
+
+const insert = new ValidatedMethod({
+  name: 'people.insert',
+  validate: new SimpleSchema({
+    pplName: { type: String },
+    pplSurname: { type: String },
+  }).validator(),
+  run({ pplName, pplSurname }) {
+    Items.insert({
+      pplName,
+      pplSurname,
+      pplLastAtn: sg.Date.create('yesterday'),
+    });
+  },
+});
+
+const remove = new ValidatedMethod({
+  name: 'people.remove',
+  validate: new SimpleSchema({
+    _id: { type: String },
+  }).validator(),
+  run({ _id }) {
+    People.remove(_id);
+  },
+});
 
 export default People;

@@ -22,3 +22,5 @@ static-html@1.1.12
 shell-server
 aldeed:simple-schema
 aldeed:collection2
+mdg:validated-method
+react-meteor-data

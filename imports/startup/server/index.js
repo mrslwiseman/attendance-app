@@ -4,7 +4,7 @@ import Attendances from '/imports/collections/attendances'
 
 import { Meteor } from 'meteor/meteor'; // base
 import sugar from 'sugar';              // sugar utility
-import lodash from 'lodash';            // another utiltiy library
+import lodash from 'lodash';            // another utility library
 // import casual from 'casual';            // casual random data generator
 
 Meteor.startup(() => {
