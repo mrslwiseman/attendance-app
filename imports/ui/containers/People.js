@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import PeopleCmp from '../components/PeopleCmp';
-import People, {insert, remove}from '../collections/people';
+import People, {insert, remove}from '../../collections/people';
 
 function handleSubmit(text) {
   const data = {

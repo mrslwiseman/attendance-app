@@ -2,31 +2,18 @@ import React, { PropTypes } from 'react';
 import PeopleAdd from './PeopleAdd';
 import PeopleList from './PeopleList';
 
-function People(props) {
+function PeopleCmp(props) {
   const {
-    loading,
-    items,
-    onSubmit,
-    onRemove,
   } = props;
 
   return (
     <div>
-      <Add onSubmit={onSubmit} />
-      <PeopleList
-        loading={loading}
-        items={items}
-        onRemove={onRemove}
-      />
+      <PeopleAdd  />
     </div>
   );
 }
 
-Todos.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  items: PropTypes.array.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
+PeopleCmp.propTypes = {
 };
 
 export default PeopleCmp;
