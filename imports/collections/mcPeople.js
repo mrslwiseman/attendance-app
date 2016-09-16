@@ -4,9 +4,10 @@
 import { Mongo } from 'meteor/mongo';
 import * as sg from 'sugar';              // sugar utility
 
-const People = new Mongo.Collection('people');
+// note: mc prefix = MongoCollection
+const mcPeople = new Mongo.Collection('people');
 
-People.attachSchema(new SimpleSchema({
+mcPeople.attachSchema(new SimpleSchema({
   pplID: {
     type: String,
     label: "Person ID",
@@ -57,7 +58,7 @@ const insert = new ValidatedMethod({
     pplSurname: { type: String },
   }).validator(),
   run({ pplName, pplSurname }) {
-    Items.insert({
+    mcPeople.insert({
       pplName,
       pplSurname,
       pplLastAtn: sg.Date.create('yesterday'),
@@ -71,8 +72,8 @@ const remove = new ValidatedMethod({
     _id: { type: String },
   }).validator(),
   run({ _id }) {
-    People.remove(_id);
+    mcPeople.remove(_id);
   },
 });
 
-export default People;
+export default mcPeople;

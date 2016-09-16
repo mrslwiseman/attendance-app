@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import PeopleCmp from '../components/PeopleCmp';
-import People, {insert, remove}from '../../collections/people';
+import mcPeople , {insert, remove} from '/imports/collections/mcPeople';
 
 function handleSubmit(text) {
   const data = {
@@ -34,7 +34,7 @@ const PeopleContainer = createContainer(()
   => {
   const peopleHandle = Meteor.subscribe('everyone');
   const loading = ! peopleHandle.ready();
-  const people = People.find({}, { sort: { pplLastAtn: 0 } }).fetch();
+  const people = mcPeople.find({}, { sort: { pplLastAtn: 0 } }).fetch();
 
   return {
     loading,

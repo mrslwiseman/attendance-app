@@ -1,16 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import React from 'react';
 import { render } from 'react-dom';
-// import HelloWorld from '/imports/ui/components/HelloWorld';
-import PeopleCmp from '/imports/ui/components/PeopleCmp';
-import PeopleContainer from '/imports/ui/containers/People';
-import './routes';
-/*
-Meteor.startup(() => {
-  render(<HelloWorld />, document.getElementById('app'));
-});
-*/
+import { renderRoutes } from '/imports/startup/client/routes.js';
 
 Meteor.startup(() => 
-  render(<PeopleCmp />, document.getElementById('app'))
+  render(renderRoutes(), document.getElementById('app'))
 );

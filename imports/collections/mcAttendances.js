@@ -3,9 +3,10 @@
 
 import { Mongo } from 'meteor/mongo';
 
-const Attendances = new Mongo.Collection('attendances');
+// note: mc prefix = MongoCollection
+const mcAttendances = new Mongo.Collection('attendances');
 
-Attendances.attachSchema(
+mcAttendances.attachSchema(
   new SimpleSchema({
     atnPersonID: {
       type: String,
@@ -60,5 +61,5 @@ const insert = new ValidatedMethod({
 });
 */
 
-export default Attendances;
+export default mcAttendances;
 // export { insert, checkIn };

@@ -28,6 +28,7 @@ class PeopleAdd extends React.Component {
 }
 
 PeopleAdd.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default PeopleAdd;

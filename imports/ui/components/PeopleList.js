@@ -4,7 +4,7 @@ import PeopleItem from './PeopleItem';
 function PeopleList(props) {
   const {
     loading,
-    items,
+    items
   } = props;
 
   if (loading) {
@@ -34,7 +34,7 @@ function PeopleList(props) {
 
 PeopleList.propTypes = {
   loading: PropTypes.bool.isRequired,
-  items: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired
 };
 
 export default PeopleList;

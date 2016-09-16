@@ -1,6 +1,6 @@
 import '/imports/startup/server';
-import People from '/imports/collections/people';
-import Attendances from '/imports/collections/attendances'
+import mcPeople from '/imports/collections/mcPeople';
+import mcAttendances from '/imports/collections/mcAttendances'
 
 import { Meteor } from 'meteor/meteor'; // base
 import sugar from 'sugar';              // sugar utility
@@ -9,7 +9,7 @@ import lodash from 'lodash';            // another utility library
 
 Meteor.startup(() => {
   // code to run on server at startup
-  if (People.find().count() === 0) {
+  if (mcPeople.find().count() === 0) {
     var dftDate = sugar.Date.create('yesterday');
     var u = [
       {n: "Joseph",s: "Szili", lad: dftDate },
@@ -19,13 +19,13 @@ Meteor.startup(() => {
     _.each(u, function(p) {
       
       var pID =
-        People.insert({
+        mcPeople.insert({
           pplName: p.n,
           pplSurname: p.s,
           pplLastAtn: p.lad
         });
       
-      Attendances.insert({
+      mcAttendances.insert({
         atnPersonID: pID,
         atnName: p.n,
         atnSurname: p.s,
