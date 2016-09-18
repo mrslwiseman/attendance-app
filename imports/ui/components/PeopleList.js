@@ -22,7 +22,7 @@ function PeopleList(props) {
   return (
     <ul>
       {items.map(({ _id, text, isChecked }) => (
-        <Item
+        <PeopleItem
           _id={_id}
           key={_id}
           text={text}
