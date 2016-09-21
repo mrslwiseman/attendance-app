@@ -5,7 +5,7 @@ import PeopleList from './PeopleList';
 function PeopleCmp(props) {
   const {
     loading, 
-    items, 
+    people, 
     onSubmit, 
     onRemove, 
   } = props;
@@ -15,7 +15,7 @@ function PeopleCmp(props) {
       <PeopleAdd onSubmit={onSubmit} />
       <PeopleList
         loading={loading}
-        items={items}
+        items={people}
         onRemove={onRemove}
       />
     </div>
@@ -24,7 +24,7 @@ function PeopleCmp(props) {
 
 PeopleCmp.propTypes = {
   loading: PropTypes.bool.isRequired, 
-  items: PropTypes.array.isRequired, 
+  people: PropTypes.array.isRequired, 
   onSubmit: PropTypes.func.isRequired, 
   onRemove: PropTypes.func.isRequired
 };

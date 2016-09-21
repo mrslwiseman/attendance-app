@@ -4,7 +4,8 @@ import PeopleItem from './PeopleItem';
 function PeopleList(props) {
   const {
     loading,
-    items
+    items,
+    onRemove,
   } = props;
 
   if (loading) {
@@ -21,11 +22,12 @@ function PeopleList(props) {
 
   return (
     <ul>
-      {items.map(({ _id, text, isChecked }) => (
+      {items.map(({ _id, pplName, pplSurname }) => (
         <PeopleItem
           _id={_id}
           key={_id}
-          text={text}
+          name={pplName}
+          surname={pplSurname}
         />
       ))}
     </ul>
@@ -34,7 +36,8 @@ function PeopleList(props) {
 
 PeopleList.propTypes = {
   loading: PropTypes.bool.isRequired,
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  onRemove: PropTypes.func.isRequired, 
 };
 
 export default PeopleList;

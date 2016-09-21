@@ -34,7 +34,7 @@ const PeopleContainer = createContainer(()
   => {
   const peopleHandle = Meteor.subscribe('everyone');
   const loading = ! peopleHandle.ready();
-  const people = mcPeople.find({}, { sort: { pplLastAtn: 0 } }).fetch();
+  const people = mcPeople.find({}, { sort: { pplLastAtn: 1, pplSurname: -1} }).fetch();
 
   return {
     loading,
