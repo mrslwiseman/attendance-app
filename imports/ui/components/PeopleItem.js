@@ -1,4 +1,7 @@
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import CheckinBtn from './CheckinBtn';
+
 
 function PeopleItem(props) {
   const {
@@ -7,9 +10,25 @@ function PeopleItem(props) {
     surname,
   } = props;
 
+  function handleCheckin(event) {
+    // event.preventDefault();
+    alert("cheking logic goes here")
+  }
+  /*
+  function onClick(event) {
+    console.log(event); // => nullified object.
+    alert("PING")
+  }*/
+
   return (
     <li>
-      {name} {surname}
+      {name} {surname} <CheckinBtn />
+       
+      {/*  <button
+          type="button"
+          value="Checkin" 
+          onClick={this.handleCheckin().bind(this)} 
+          >CHK</button> */}
     </li>
   );
 }

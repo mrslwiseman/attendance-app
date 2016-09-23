@@ -20,3 +20,9 @@ The UI has been roughed out and the pics below are intended as a guide only.
 #### For some reason github displays this horizontally not vertically ...
 ![the picture](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/attenApp_bigPicture.jpg)
 It's because the orientation of the image is stored in the meta data, and github is respecting that :)
+
+## React Epiphany
+Plan to re-implement initial start using this overlay as the basis for react componentry:
+![the picture](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/ui-1-layout-component-markup.jpg)
+
+![modal confirmation](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/ui-1-layout-modal-component-markup.jpg)
