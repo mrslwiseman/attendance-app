@@ -1,6 +1,12 @@
 import React, { PropTypes } from 'react';
 import Avatar from './Avatar';
 
+
+CheckedInList.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  ppl: PropTypes.array.isRequired, 
+};
+
 function CheckedInList(props) {
   const {
     loading,
@@ -19,13 +25,14 @@ function CheckedInList(props) {
     );
   }
 
+  const isCheckedIn = true;
   return (
     <div>
-      {ppl.map(({ _id, pplName, pplSurname, pplAvatar, pplLastAtn }) => (
+      {ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
         <div key={_id}>
           <Avatar
             _id={_id}
-            lastAttended={pplLastAtn}
+            isCheckedin={isCheckedIn}
             fileName={pplAvatar}
           />
           <br></br>
@@ -37,10 +44,5 @@ function CheckedInList(props) {
     </div>
   );
 }
-
-CheckedInList.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  ppl: PropTypes.array.isRequired, 
-};
 
 export default CheckedInList;
