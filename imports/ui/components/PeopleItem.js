@@ -23,7 +23,7 @@ function PeopleItem(props) {
 
   return (
     <li>
-      <img src={"/public/images/avatars/" + avatar} alt="sumText"></img>
+      <img src={"/images/avatars/" + avatar} alt="sumText" width="100" height="100" ></img>
       {name} {surname} <CheckinBtn />
     </li>
   );
