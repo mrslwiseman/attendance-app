@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
-
 Avatar.propTypes = {
   _id: PropTypes.string.isRequired,
   fileName: PropTypes.string.isRequired,
