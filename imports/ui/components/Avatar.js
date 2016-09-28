@@ -1,6 +1,13 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
+
+Avatar.propTypes = {
+  _id: PropTypes.string.isRequired,
+  fileName: PropTypes.string.isRequired,
+  lastAttended: PropTypes.string.isRequired
+};
+
 function Avatar(props) {
   const {
     _id,
@@ -14,11 +21,5 @@ function Avatar(props) {
       </img>
   );
 }
-
-Avatar.propTypes = {
-  _id: PropTypes.string.isRequired,
-  fileName: PropTypes.string.isRequired,
-  lastAttended: PropTypes.string.isRequired
-};
 
 export default Avatar;
