@@ -13,8 +13,8 @@ Meteor.startup(() => {
   if (mcPeople.find().count() === 0) {
     var dftDate = sugar.Date.create('yesterday');
     var u = [
-      {n: "Joseph",s: "Szili", lad: dftDate, avatar: "1.jpg"},
-      {n: "Mikkel",s: "King", lad: dftDate, avatar: "2.jpg"},
+      {n: "Joseph",s: "Szili", lad: sugar.Date.create('today'), avatar: "1.jpg"},
+      {n: "Mikkel",s: "King", lad: sugar.Date.create('today'), avatar: "2.jpg"},
     ];
 
     let i = 0;

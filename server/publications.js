@@ -9,11 +9,11 @@ Meteor.publish('everyone', function() {
 });
 
 Meteor.publish("ready.for.checkin", function () {
-  return mcAttendances.find({pplLastAtn: {$ne: sg.Date.create('today')}}, { sort: { atnDate: 0, pplSurname: 1 }} );
+  return mcPeople.find({pplLastAtn: {$ne: sg.Date.create('today')}}, { sort: { pplLastAtn: -1, pplSurname: 1 }} );
 });
 
 Meteor.publish("checked.in", function () {
-  return mcAttendances.find({pplLastAtn: {$eq: sg.Date.create('today')}} , { sort: { atnDate: 0, pplSurname: 1 }} );
+  return mcPeople.find({pplLastAtn: {$eq: sg.Date.create('today')}} , { sort: { pplLastAtn: -1, pplSurname: 1 }} );
 });
 
 // Pubs of Attendance data
