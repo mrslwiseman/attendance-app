@@ -49,6 +49,11 @@ mcPeople.attachSchema(new SimpleSchema({
     label: "Last Attended Date",
     optional: false
   },
+  pplAvatar: {
+    type: String,
+    label: "Avatar file name",
+    optional: true
+  },
 }));
 
 const insert = new ValidatedMethod({
@@ -56,12 +61,14 @@ const insert = new ValidatedMethod({
   validate: new SimpleSchema({
     pplName: { type: String },
     pplSurname: { type: String },
+    pplAvatar: { type: String },
   }).validator(),
-  run({ pplName, pplSurname }) {
+  run({ pplName, pplSurname, pplAvatar }) {
     mcPeople.insert({
       pplName,
       pplSurname,
       pplLastAtn: sg.Date.create('yesterday'),
+      pplAvatar
     });
   },
 });

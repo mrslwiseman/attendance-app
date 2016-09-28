@@ -8,6 +8,7 @@ function PeopleItem(props) {
     _id,
     name,
     surname,
+    avatar
   } = props;
 
   function handleCheckin(event) {
@@ -22,13 +23,8 @@ function PeopleItem(props) {
 
   return (
     <li>
+      <img src={"/public/images/avatars/" + avatar} alt="sumText"></img>
       {name} {surname} <CheckinBtn />
-       
-      {/*  <button
-          type="button"
-          value="Checkin" 
-          onClick={this.handleCheckin().bind(this)} 
-          >CHK</button> */}
     </li>
   );
 }
@@ -37,6 +33,7 @@ PeopleItem.propTypes = {
   _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   surname: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
 };
 
 export default PeopleItem;

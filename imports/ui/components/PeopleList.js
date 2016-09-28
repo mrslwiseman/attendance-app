@@ -22,12 +22,13 @@ function PeopleList(props) {
 
   return (
     <ul>
-      {items.map(({ _id, pplName, pplSurname }) => (
+      {items.map(({ _id, pplName, pplSurname, pplAvatar }) => (
         <PeopleItem
           _id={_id}
           key={_id}
           name={pplName}
           surname={pplSurname}
+          avatar={pplAvatar}
         />
       ))}
     </ul>
