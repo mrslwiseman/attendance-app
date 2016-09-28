@@ -5,8 +5,19 @@ import CheckedIn from '../containers/CheckedIn';
 function AttendanceApp() {
   return (
     <div>
-    <h1>Checked In</h1> <CheckedIn/>
-    <h1>CheckIn Pool</h1> <CheckInPool/>
+    <h1>Back2Bikes Attendance App</h1>
+    <table>
+      <tbody>
+        <tr>
+          <th>Ready for Check In</th>
+          <th>Checked In</th>
+        </tr>
+        <tr>
+          <td style={{verticalAlign: 'top'}}><CheckInPool/></td>
+          <td style={{verticalAlign: 'top'}}><CheckedIn/></td>
+        </tr>
+      </tbody>
+    </table>
     </div>
   );
 }

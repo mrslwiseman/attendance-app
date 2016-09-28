@@ -20,17 +20,21 @@ function CheckedInList(props) {
   }
 
   return (
-    <ul>
-      {ppl.map(({ _id,  pplName, pplSurname, pplAvatar, pplLastAtn }) => (
-        <li key={_id}> {pplName} {pplSurname}
+    <div>
+      {ppl.map(({ _id, pplName, pplSurname, pplAvatar, pplLastAtn }) => (
+        <div key={_id}>
           <Avatar
             _id={_id}
             lastAttended={pplLastAtn}
             fileName={pplAvatar}
           />
-        </li>
+          <br></br>
+          {pplName} {pplSurname}
+          <br></br>
+          <br></br>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 
