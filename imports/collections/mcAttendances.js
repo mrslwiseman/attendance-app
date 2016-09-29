@@ -13,18 +13,6 @@ mcAttendances.attachSchema(
       label: "Attending Person ID",
       optional: false
     },
-    atnName: {
-      type: String,
-      label: "Name",
-      max: 128,
-      optional: false
-    },
-    atnSurname: {
-      type: String,
-      label: "Surname",
-      max: 128,
-      optional: false
-    },
     atnDate: {
       type: Date,
       label: "Attendance Date",
