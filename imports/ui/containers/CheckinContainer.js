@@ -26,7 +26,7 @@ function recordAttendance(person_id) {
 
 }
 
-const CheckInPool = createContainer(() 
+const CheckinContainer = createContainer(() 
   => {
   const peopleHandle = Meteor.subscribe('ready.for.checkin');
   const loading = ! peopleHandle.ready();
@@ -39,4 +39,4 @@ const CheckInPool = createContainer(()
   };
 }, CheckinList);
 
-export default CheckInPool;
+export default CheckinContainer;

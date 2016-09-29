@@ -39,6 +39,8 @@ class CheckinList extends React.Component {
     this.state = {
       modalIsOpen: false,
       _id: "",
+      name: "",
+      surname: "",
       avatar: ""
     };
     this.openModal = this.openModal.bind(this);
@@ -47,8 +49,10 @@ class CheckinList extends React.Component {
   }
 
   // Modal handlers
-  openModal(person_id, avatar) {
+  openModal(person_id, name, surname, avatar) {
     this.setState({_id: person_id})
+    this.setState({name: name})
+    this.setState({surname: surname})
     this.setState({avatar: avatar})
     this.setState({modalIsOpen: true});
   }
@@ -79,7 +83,7 @@ class CheckinList extends React.Component {
     return (
       <div>
         {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
-          <div key={_id} onClick={() => this.openModal(_id, pplAvatar)} >
+          <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)} >
             <Avatar
               _id={_id}
               isCheckedin={isCheckedIn}
@@ -104,6 +108,8 @@ class CheckinList extends React.Component {
             isCheckedin={isCheckedIn}
             fileName={this.state.avatar}
           />
+          <br></br>
+          {this.state.name} {this.state.surname}
           <br></br>
           <br></br>
           <button onClick={this.closeModal}>not me!</button>

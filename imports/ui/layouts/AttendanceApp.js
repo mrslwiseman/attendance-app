@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import CheckInPool from '../containers/CheckInPool';
-import CheckedIn from '../containers/CheckedIn';
+import CheckinContainer from '../containers/CheckinContainer';
+import CheckedInContainer from '../containers/CheckedInContainer';
 
 function AttendanceApp() {
   return (
@@ -13,8 +13,8 @@ function AttendanceApp() {
           <th>Checked In</th>
         </tr>
         <tr>
-          <td style={{verticalAlign: 'top'}}><CheckInPool/></td>
-          <td style={{verticalAlign: 'top'}}><CheckedIn/></td>
+          <td style={{verticalAlign: 'top'}}><CheckinContainer/></td>
+          <td style={{verticalAlign: 'top'}}><CheckedInContainer/></td>
         </tr>
       </tbody>
     </table>
