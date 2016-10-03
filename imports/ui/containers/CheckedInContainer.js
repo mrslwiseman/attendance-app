@@ -5,7 +5,7 @@ import mcPeople , {insert, remove} from '/imports/collections/mcPeople';
 import * as sg from 'sugar';              // sugar utility
 
 
-const CheckedIn = createContainer(() 
+const CheckedInContainer = createContainer(() 
   => {
   const peopleHandle = Meteor.subscribe('checked.in');
   const loading = ! peopleHandle.ready();
@@ -17,4 +17,4 @@ const CheckedIn = createContainer(()
   };
 }, CheckedInList);
 
-export default CheckedIn;
+export default CheckedInContainer;
