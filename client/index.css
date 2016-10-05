@@ -2,3 +2,15 @@ ul {
   list-style: none;
   padding: 0;
 }
+.flow {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+}
+
+.raised.item {
+	text-align: center;
+}
+.avcontainer: {
+	flex-grow: 1;
+}

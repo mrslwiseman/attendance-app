@@ -91,9 +91,9 @@ class CheckinList extends React.Component {
             <i className={'inverted circular search icon'}></i>
           </div>
         </div>
-        <div className={'ui relaxed items'}>
+        <div className={'ui relaxed list flow'}>
           {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
-            <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)} >
+            <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)} className="avcontainer">
               <Avatar
                 _id={_id}
                 firstName={pplName}
