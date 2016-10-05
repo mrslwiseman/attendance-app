@@ -8,8 +8,7 @@ import HomePage from '/imports/ui/pages/HomePage.js';
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
-      <Route path="/" component={HomePage}/>
-      <Route path="/checkin" component={AttendanceApp}/>
+      <Route path="/" component={AttendanceApp}/>
       <Route path="*" component={NotFoundPage}/>
   </Router>
 );

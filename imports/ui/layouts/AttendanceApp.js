@@ -4,20 +4,12 @@ import CheckedInContainer from '../containers/CheckedInContainer';
 
 function AttendanceApp() {
   return (
-    <div>
-    <h1>Back2Bikes Attendance App</h1>
-    <table>
-      <tbody>
-        <tr>
-          <th>Ready for Check In</th>
-          <th>Checked In</th>
-        </tr>
-        <tr>
-          <td style={{verticalAlign: 'top'}}><CheckinContainer/></td>
-          <td style={{verticalAlign: 'top'}}><CheckedInContainer/></td>
-        </tr>
-      </tbody>
-    </table>
+    <div className={'ui two column grid container'}>
+      <h1 className={'row equal width centered'}>Back-2-Bikes Attendance</h1>
+      <div className={'row'}>
+        <CheckinContainer/>
+        <CheckedInContainer/>
+      </div> 
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import CheckinConfirm from './CheckinConfirm';
 import Avatar from './Avatar';
 import Modal from 'react-modal';
 
@@ -81,41 +80,55 @@ class CheckinList extends React.Component {
     const isCheckedIn = false;
 
     return (
-      <div>
-        {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
-          <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)} >
-            <Avatar
-              _id={_id}
-              isCheckedin={isCheckedIn}
-              fileName={pplAvatar}
-            />
-            <br></br>
-            {pplName} {pplSurname}
-            <br></br>
-            <br></br>
+      <div 
+        className={'column padded'}
+        style={{backgroundColor: 'Snow'}} 
+      >
+        <h2>Ready for Check In</h2>
+        <div className={'ui search'}>
+          <div className={'ui icon input'} >
+            <input className={'prompt'} type='text' placeholder='Type name to search'></input>
+            <i className={'inverted circular search icon'}></i>
           </div>
-        ))}
+        </div>
+        <div className={'ui relaxed items'}>
+          {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
+            <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)} >
+              <Avatar
+                _id={_id}
+                firstName={pplName}
+                lastName={pplSurname}
+                isCheckedin={isCheckedIn}
+                fileName={pplAvatar}
+              />
+            </div>
+          ))}
 
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles} >
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles} 
+            >
+            <div aligned={'center'}>
+              <h2>Checkin</h2>
+              <br></br>
+              <Avatar 
+                _id={this.state._id}
+                firstName={this.state.name}
+                lastName={this.state.surname}
+                isCheckedin={isCheckedIn}
+                fileName={this.state.avatar}
+              />
+              <br/>
+              <div>
+                <button className={'ui button'} onClick={this.closeModal}>not me!</button>
+                <button className={'ui green button'} onClick={() => this.clickConfirm(this.state._id)}>CONFIRM</button>
+              </div>
+            </div>
+          </Modal>
 
-          <h2>Confirm Checkin</h2>
-          <br></br>
-          <Avatar
-            _id={this.state._id}
-            isCheckedin={isCheckedIn}
-            fileName={this.state.avatar}
-          />
-          <br></br>
-          {this.state.name} {this.state.surname}
-          <br></br>
-          <br></br>
-          <button onClick={this.closeModal}>not me!</button>
-          <button onClick={() => this.clickConfirm(this.state._id)}>CONFIRM</button>
-        </Modal>
-
+        </div>
+        
       </div>
     );
   }

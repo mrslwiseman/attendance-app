@@ -27,20 +27,24 @@ function CheckedInList(props) {
 
   const isCheckedIn = true;
   return (
-    <div>
-      {ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
-        <div key={_id}>
-          <Avatar
-            _id={_id}
-            isCheckedin={isCheckedIn}
-            fileName={pplAvatar}
-          />
-          <br></br>
-          {pplName} {pplSurname}
-          <br></br>
-          <br></br>
-        </div>
-      ))}
+    <div 
+      className={'column padded'}
+      style={{backgroundColor: 'WhiteSmoke'}} 
+    >
+      <h2>Checked In Today</h2>
+      <div className={'ui relaxed list'}        >
+        {ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
+          <div key={_id}>
+            <Avatar
+              _id={_id}
+              firstName={pplName}
+              lastName={pplSurname}
+              isCheckedin={isCheckedIn}
+              fileName={pplAvatar}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
