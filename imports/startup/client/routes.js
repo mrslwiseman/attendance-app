@@ -9,6 +9,6 @@ import HomePage from '/imports/ui/pages/HomePage.js';
 export const renderRoutes = () => (
   <Router history={browserHistory}>
       <Route path="/" component={AttendanceApp}/>
-      <Route path="*" component={NotFoundPage}/>
+      <Route path="*" component={PagetNotFound}/>
   </Router>
 );
