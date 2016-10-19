@@ -25,3 +25,4 @@ react-meteor-data
 semantic:ui
 less
 juliancwirko:postcss
+practicalmeteor:mocha
