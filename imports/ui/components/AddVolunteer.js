@@ -20,7 +20,6 @@ class AddVolunteer extends React.Component {
     return (
       <section id="add-voluteer">
           <NewVolunteerForm />
-          <div className={"a-wrap"}><Link className={"ui button"} to="/">Cancel</Link></div>
       </section>
     );
   }
