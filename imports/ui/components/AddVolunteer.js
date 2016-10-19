@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
+import NewVolunteerForm from './NewVolunteerForm';
 
 import mcPeople from '/imports/collections/mcPeople';
 
@@ -17,9 +18,10 @@ class AddVolunteer extends React.Component {
 
   render() {
     return (
-      <div>
-          <Link className={"ui button"} to="/">Home</Link>
-      </div>
+      <section id="add-voluteer">
+          <NewVolunteerForm />
+          <div className={"a-wrap"}><Link className={"ui button"} to="/">Cancel</Link></div>
+      </section>
     );
   }
 }

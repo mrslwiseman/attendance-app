@@ -2,3 +2,10 @@ ul {
   list-style: none;
   padding: 0;
 }
+section#volunteer-signup-form {
+  margin: 85px auto;
+  text-align: center;
+}
+div.a-wrap {
+  text-align: center;
+}
