@@ -1,21 +1,22 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
 import Avatar from './Avatar';
 import Modal from 'react-modal';
 
 //============================================================================//
-// A word about react-modal 
+// A word about react-modal
 //
 // Modal's can't be called from anywhere using standard React. This means that
 // a modal dialogue can only be embedded within a parent element which is whats
 // happening in this module. As the Confirmation Modal is specific to this list,
-// this is not really a big problem just a little icky from a coding style 
+// this is not really a big problem just a little icky from a coding style
 // perpective.
-// 
-// It will be a problem if we ever wanted to be invoke an "add a person" 
+//
+// It will be a problem if we ever wanted to be invoke an "add a person"
 // dialogue from within 2 or 3 different components.
 //
-// Therefore at some stage we'll need to consider refactoring modals using 
+// Therefore at some stage we'll need to consider refactoring modals using
 // either Flux or Redux.
 //
 //============================================================================//
@@ -80,9 +81,9 @@ class CheckinList extends React.Component {
     const isCheckedIn = false;
 
     return (
-      <div 
+      <div
         className={'column padded'}
-        style={{backgroundColor: 'Snow'}} 
+        style={{backgroundColor: 'Snow'}}
       >
         <h2>Ready for Check In</h2>
         <div className={'ui search'}>
@@ -91,6 +92,7 @@ class CheckinList extends React.Component {
             <i className={'inverted circular search icon'}></i>
           </div>
         </div>
+          <Link className={'ui button'} to="/addvolunteer">Add new volunteer</Link>
         <div className={'ui relaxed items'}>
           {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
             <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)} >
@@ -107,12 +109,12 @@ class CheckinList extends React.Component {
           <Modal
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
-            style={customStyles} 
+            style={customStyles}
             >
             <div aligned={'center'}>
               <h2>Checkin</h2>
               <br></br>
-              <Avatar 
+              <Avatar
                 _id={this.state._id}
                 firstName={this.state.name}
                 lastName={this.state.surname}
@@ -128,7 +130,7 @@ class CheckinList extends React.Component {
           </Modal>
 
         </div>
-        
+
       </div>
     );
   }
@@ -136,7 +138,7 @@ class CheckinList extends React.Component {
 
 CheckinList.propTypes = {
   loading: PropTypes.bool.isRequired,
-  ppl: PropTypes.array.isRequired, 
+  ppl: PropTypes.array.isRequired,
   recordAttendance: PropTypes.func.isRequired
 };
 
