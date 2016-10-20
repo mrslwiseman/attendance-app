@@ -26,3 +26,5 @@ semantic:ui
 less
 juliancwirko:postcss
 practicalmeteor:mocha
+xolvio:cleaner
+practicalmeteor:chai
