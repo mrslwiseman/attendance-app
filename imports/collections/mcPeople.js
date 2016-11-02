@@ -1,4 +1,4 @@
-/* global ValidatedMethod replaces>matb33:collection-hooks, 
+/* global ValidatedMethod replaces>matb33:collection-hooks,
    SimpleSchema */
 
 import { Mongo } from 'meteor/mongo';
@@ -61,15 +61,25 @@ const insert = new ValidatedMethod({
   validate: new SimpleSchema({
     pplName: { type: String },
     pplSurname: { type: String },
-    pplAvatar: { type: String },
+    pplAvatar: { type: String, optional: true },
   }).validator(),
-  run({ pplName, pplSurname, pplAvatar }) {
-    mcPeople.insert({
+  run(data) {
+    const {
       pplName,
       pplSurname,
+      pplAvatar,
+    } = data;
+
+    const doc = {
+      pplName,
+      pplSurname,
+      pplAvatar,
       pplLastAtn: sg.Date.create('yesterday'),
-      pplAvatar
-    });
+    };
+
+    console.log(data, doc);
+
+    mcPeople.insert(doc);
   },
 });
 
@@ -84,3 +94,4 @@ const remove = new ValidatedMethod({
 });
 
 export default mcPeople;
+export { insert, remove };
