@@ -2,6 +2,7 @@ ul {
   list-style: none;
   padding: 0;
 }
+
 .flow {
   display: flex;
   justify-content: space-around;
@@ -12,6 +13,7 @@ ul {
 	text-align: center;
 }
 
-.avcontainer: {
+.avcontainer {
 	flex-grow: 1;
+  font-size: 1.5em;
 }

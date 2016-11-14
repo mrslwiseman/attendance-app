@@ -81,7 +81,7 @@ class CheckinList extends React.Component {
 
     return (
       <div 
-        className={'column padded'}
+        className={'thirteen wide column'}
         style={{backgroundColor: 'Snow'}} 
       >
         <h2>Ready for Check In</h2>
@@ -93,7 +93,7 @@ class CheckinList extends React.Component {
         </div>
         <div className={'ui relaxed list flow'}>
           {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
-            <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)} className="avcontainer">
+            <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)}>
               <Avatar
                 _id={_id}
                 firstName={pplName}

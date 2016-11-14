@@ -28,7 +28,7 @@ function CheckedInList(props) {
   const isCheckedIn = true;
   return (
     <div 
-      className={'column padded'}
+      className={'three wide column'}
       style={{backgroundColor: 'WhiteSmoke'}} 
     >
       <h2>Checked In Today</h2>
