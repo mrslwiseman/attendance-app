@@ -22,6 +22,11 @@ describe('SERVER: my simple EXPECT suite', function () {
     let atest = true
     expect(atest).not.to.equal(false)
   })
+  
+  it('this test should always pass as well x2', function () {
+    let atest = true
+    expect(atest).not.to.equal(false)
+  })
 
   it('this test should always fail', function () {
     let atest = true
