@@ -26,6 +26,18 @@ mcPeople.attachSchema(new SimpleSchema({
     max: 128,
     optional: false
   },
+  pplPhone: {
+    type: String,
+    label: "Phone",
+    max: 128,
+    optional: true
+  },
+  pplEmail: {
+    type: String,
+    label: "Email",
+    max: 128,
+    optional: true
+  },
   pplIsVol: {
     type: Boolean,
     label: "Is a volunteer",
@@ -61,23 +73,31 @@ const insert = new ValidatedMethod({
   validate: new SimpleSchema({
     pplName: { type: String },
     pplSurname: { type: String },
+    pplPhone: { type: String },
+    pplEmail: { type: String },
     pplAvatar: { type: String, optional: true },
   }).validator(),
   run(data) {
     const {
       pplName,
       pplSurname,
+      pplPhone,
+      pplEmail,
       pplAvatar,
     } = data;
 
     const doc = {
       pplName,
       pplSurname,
+      pplPhone,
+      pplEmail,
       pplAvatar,
       pplLastAtn: sg.Date.create('yesterday'),
     };
 
-    console.log(data, doc);
+    console.log("Here is the data:" , data);
+    console.log("Here is the doc:", doc);
+    // console.log(data, doc);
 
     mcPeople.insert(doc);
   },
