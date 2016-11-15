@@ -2,23 +2,18 @@ ul {
   list-style: none;
   padding: 0;
 }
-section#volunteer-signup-form {
-  margin: 85px auto 22px;
-  text-align: center;
-}
-div.a-wrap {
-  text-align: center;
+
+.flow {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
 }
 
-#volunteer-signup-form input[type="text"] {
-  display: block;
-  margin: 6px auto;
-  width: 500px;
+.raised.item {
+	text-align: center;
 }
-#volunteer-signup-form input[type="submit"] {
-  margin-top: 22px
-}
-.submit-cancel * {
-  display: inline-block;
-  width: 250px;
+
+.avcontainer {
+	flex-grow: 1;
+  font-size: 1.5em;
 }

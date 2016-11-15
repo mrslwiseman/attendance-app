@@ -20,9 +20,9 @@ function Avatar(props) {
 
   let borderColour = isCheckedin ? 'LimeGreen' : 'grey';
   return (
-    <div className={'raised item'} key={_id} >
+    <div className="avcontainer raised item" key={_id} >
       <img
-          className={'ui avatar image tiny'}         
+          className={'ui avatar image small'}         
           src={"/images/avatars/" + fileName}
           style={{border: '5px solid ' + borderColour }} 
           >
@@ -30,6 +30,7 @@ function Avatar(props) {
       <div className={'middle aligned content'}>
         <b className={'header'}>{firstName} {lastName}</b>
       </div>
+      <br/>   
     </div>
   );
 }

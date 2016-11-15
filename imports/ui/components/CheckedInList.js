@@ -28,11 +28,11 @@ function CheckedInList(props) {
   const isCheckedIn = true;
   return (
     <div 
-      className={'column padded'}
+      className={'three wide column'}
       style={{backgroundColor: 'WhiteSmoke'}} 
     >
       <h2>Checked In Today</h2>
-      <div className={'ui relaxed list'}        >
+      <div className={'ui relaxed list flow'}        >
         {ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
           <div key={_id}>
             <Avatar
