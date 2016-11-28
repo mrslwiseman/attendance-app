@@ -10,7 +10,7 @@ Meteor.startup(() => {
 
   // seed ensures same data is generated
   casual.seed(1066);
-  
+
   if (mcPeople.find().count() === 0) {
     var dftDate = sugar.Date.create('yesterday');
     var u = [
@@ -24,6 +24,8 @@ Meteor.startup(() => {
       u.push({n: casual.first_name, s: casual.last_name, lad: dftDate, avatar: randomInt+".jpg"})
       ++i;
     } while (i<200)
+
+    u = [];
 
     for (let p of u) {
       mcPeople.insert({

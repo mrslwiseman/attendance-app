@@ -74,7 +74,10 @@ class CheckinList extends React.Component {
 
     if (this.props.ppl.length === 0) {
       return (
-        <p>No one to check in!</p>
+        <div>
+          <p>No one to check in!</p>
+          <Link className={'ui button'} to="/addvolunteer">Add new volunteer</Link>
+        </div>
       );
     }
 
@@ -85,6 +88,8 @@ class CheckinList extends React.Component {
         className={'thirteen wide column'}
         style={{backgroundColor: 'Snow'}}
       >
+      <Link className={'ui button'} to="/addvolunteer">Add new volunteer</Link>
+
         <h2>Ready for Check In</h2>
         <div className={'ui search'}>
           <div className={'ui icon input'} >
@@ -92,7 +97,6 @@ class CheckinList extends React.Component {
             <i className={'inverted circular search icon'}></i>
           </div>
         </div>
-          <Link className={'ui button'} to="/addvolunteer">Add new volunteer</Link>
         <div className={'ui relaxed list flow'}>
           {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
             <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)}>

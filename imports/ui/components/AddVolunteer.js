@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router';
+import { Link, Router, browserHistory } from 'react-router';
+
 // import casual from 'casual';            // casual random data generator
 
 // import NewVolunteerForm from './NewVolunteerForm';
 
 import mcPeople from '/imports/collections/mcPeople';
 
+var transitionTo = Router.transitionTo;
+
 class AddVolunteer extends React.Component {
-  constructor(props) {
+  constructor(props, context) {
     super(props);
-    this.handleSubmit=this.handleSubmit.bind(this)
+    this.handleSubmit=this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
@@ -23,7 +26,8 @@ class AddVolunteer extends React.Component {
       pplEmail: this.pplEmail.value,
       pplAvatar: Math.floor((Math.random() * 10) + 1) + '.jpg',
     });
-    this.props.$setPristine();
+    // this.props.$setPristine();
+    browserHistory.push('/');
   }
 
   // handleSubmit(event) {
