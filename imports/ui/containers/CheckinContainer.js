@@ -5,13 +5,13 @@ import mcPeople , {insert, remove} from '/imports/collections/mcPeople';
 import mcAttendances from '/imports/collections/mcAttendances'
 import * as sg from 'sugar';              // sugar utility
 
-function recordAttendance(person_id) {
+function recordAttendance(person_id, hours) {
 
   // put attendance record
   mcAttendances.insert({
     atnPersonID: person_id,
     atnDate: sg.Date.create('today'),
-    atnHours: 6
+    atnHours: hours
   });
   
   // update last attended date for the person
