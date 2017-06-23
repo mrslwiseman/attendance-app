@@ -152,8 +152,9 @@ class CheckinList extends React.Component {
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
             style={customStyles} 
+            contentLabel="WTF"
             >
-            <div aligned={'center'}>
+            <div >
               <h2>Checkin</h2>
               <br></br>
               <Avatar 

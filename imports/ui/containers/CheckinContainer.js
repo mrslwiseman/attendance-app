@@ -26,8 +26,7 @@ function recordAttendance(person_id, hours) {
 
 }
 
-const CheckinContainer = createContainer(() 
-  => {
+const CheckinContainer = createContainer(() => {
   const peopleHandle = Meteor.subscribe('ready.for.checkin');
   const loading = ! peopleHandle.ready();
   const ppl = mcPeople.find({pplLastAtn: {$ne: sg.Date.create('today')}}, { sort: { pplLastAtn: 1, pplSurname: -1} }).fetch();
