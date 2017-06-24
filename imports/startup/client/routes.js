@@ -1,5 +1,8 @@
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
+
+import { render } from 'react-dom';
+// Import routing components
+import { BrowserRouter, HashRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 // route components
 import AttendanceApp from '/imports/ui/layouts/AttendanceApp.js';
@@ -7,8 +10,15 @@ import PageNotFound from '/imports/ui/pages/PageNotFound.js';
 import HomePage from '/imports/ui/pages/HomePage.js';
 
 export const renderRoutes = () => (
-  <Router history={browserHistory}>
-      <Route path="/" component={AttendanceApp}/>
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={AttendanceApp}/>
       <Route path="*" component={PageNotFound}/>
-  </Router>
+    </Switch>
+  </BrowserRouter>
 );
+
+  // <Router history={browserHistory}>
+  //     <Route path="/" component={AttendanceApp}/>
+  //     <Route path="*" component={PageNotFound}/>
+  // </Router>
