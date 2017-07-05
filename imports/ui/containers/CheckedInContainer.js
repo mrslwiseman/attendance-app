@@ -5,8 +5,7 @@ import mcPeople , {insert, remove} from '/imports/collections/mcPeople';
 import * as sg from 'sugar';              // sugar utility
 
 
-const CheckedInContainer = createContainer(() 
-  => {
+const CheckedInContainer = createContainer(() => {
   const peopleHandle = Meteor.subscribe('checked.in');
   const loading = ! peopleHandle.ready();
   const ppl = mcPeople.find({pplLastAtn: {$eq: sg.Date.create('today')}}, { sort: { pplLastAtn: 1, pplSurname: -1} }).fetch();

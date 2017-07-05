@@ -1,8 +1,13 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import Avatar from './Avatar';
+import Search from './Search';
 import Modal from 'react-modal';
+import Slider from 'rc-slider';
+require('rc-slider/assets/index.css');
+// import { Input } from 'semantic-ui-react';
 
 //============================================================================//
 // A word about react-modal
@@ -33,6 +38,38 @@ const customStyles = {
   }
 };
 
+const style = {fontSize: 20}
+
+// Marks for 
+const marks = {
+  1: {
+    style: { fontSize: 20},
+    label: <strong>1</strong>, 
+  },
+  2: {
+    style: { fontSize: 20},
+    label: <strong>2</strong>, 
+  },
+  3: {
+    style: { fontSize: 20},
+    label: <strong>3</strong>, 
+  },
+  4: {
+    style: { fontSize: 20},
+    label: <strong>4</strong>, 
+  },
+  5: {
+    style: { fontSize: 20},
+    label: <strong>5</strong>, 
+  },
+  6: {
+    style: { fontSize: 20},
+    label: <strong>6</strong>
+  }
+  
+};
+
+
 class CheckinList extends React.Component {
   constructor(props) {
     super(props);
@@ -41,11 +78,13 @@ class CheckinList extends React.Component {
       _id: "",
       name: "",
       surname: "",
-      avatar: ""
+      avatar: "",
+      hours: 2
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.clickConfirm = this.clickConfirm.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   // Modal handlers
@@ -59,9 +98,14 @@ class CheckinList extends React.Component {
   closeModal() {
     this.setState({modalIsOpen: false});
   }
-  clickConfirm(person_id) {
-    this.props.recordAttendance(person_id)
+  clickConfirm(person_id, hours) {
+    this.props.recordAttendance(person_id, hours)
     this.closeModal();
+  }
+
+  handleInput(v) {
+    console.log(v);
+    this.setState({hours: v})
   }
 
   // Main render with built in Modal
@@ -97,6 +141,7 @@ class CheckinList extends React.Component {
             <i className={'inverted circular search icon'}></i>
           </div>
         </div>
+        
         <div className={'ui relaxed list flow'}>
           {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
             <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)}>
@@ -113,9 +158,10 @@ class CheckinList extends React.Component {
           <Modal
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
-            style={customStyles}
+            style={customStyles} 
+            contentLabel="WTF"
             >
-            <div aligned={'center'}>
+            <div >
               <h2>Checkin</h2>
               <br></br>
               <Avatar
@@ -125,10 +171,28 @@ class CheckinList extends React.Component {
                 isCheckedin={isCheckedIn}
                 fileName={this.state.avatar}
               />
+              <label>Check In Hours</label>
+              <br/>
+              <br/>
+              <Slider
+                min={1}
+                max={6}
+                step={1}
+                marks={marks}
+                defaultValue={this.state.hours}
+                onChange={this.handleInput}
+                dots
+              />
+              <br/>
               <br/>
               <div>
-                <button className={'ui button'} onClick={this.closeModal}>not me!</button>
-                <button className={'ui green button'} onClick={() => this.clickConfirm(this.state._id)}>CONFIRM</button>
+                <button 
+                  className={'ui button'} 
+                  onClick={this.closeModal}>not me!
+                </button>
+                <button 
+                  className={'ui green button'} 
+                  onClick={() => this.clickConfirm(this.state._id, this.state.hours)}>CONFIRM</button>
               </div>
             </div>
           </Modal>
