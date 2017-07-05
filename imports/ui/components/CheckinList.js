@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Avatar from './Avatar';
 import Search from './Search';
 import Modal from 'react-modal';
@@ -120,7 +120,7 @@ class CheckinList extends React.Component {
       return (
         <div>
           <p>No one to check in!</p>
-          <button className={'ui button'} to="/addvolunteer">Add new volunteer</button>
+          <Link className={'ui button'} to="/addvolunteer">Add new volunteer </Link>
         </div>
       );
     }
@@ -132,7 +132,7 @@ class CheckinList extends React.Component {
         className={'thirteen wide column'}
         style={{backgroundColor: 'Snow'}}
       >
-      <button className={'ui button'} to="/addvolunteer">Add new volunteer</button>
+      <Link className={'ui button'} to="/addvolunteer">Add new volunteer</Link>
 
         <h2>Ready for Check In</h2>
         <div className={'ui search'}>
