@@ -120,7 +120,7 @@ class CheckinList extends React.Component {
       return (
         <div>
           <p>No one to check in!</p>
-          <Link className={'ui button'} to="/addvolunteer">Add new volunteer</Link>
+          <button className={'ui button'} to="/addvolunteer">Add new volunteer</button>
         </div>
       );
     }
@@ -132,7 +132,7 @@ class CheckinList extends React.Component {
         className={'thirteen wide column'}
         style={{backgroundColor: 'Snow'}}
       >
-      <Link className={'ui button'} to="/addvolunteer">Add new volunteer</Link>
+      <button className={'ui button'} to="/addvolunteer">Add new volunteer</button>
 
         <h2>Ready for Check In</h2>
         <div className={'ui search'}>

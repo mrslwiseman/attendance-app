@@ -1,4 +1,4 @@
-import '/imports/startup/server';
+//import '/imports/startup/server';
 import mcPeople from '/imports/collections/mcPeople';
 import mcAttendances from '/imports/collections/mcAttendances'
 
@@ -20,12 +20,13 @@ Meteor.startup(() => {
 
     let i = 0;
     do {
-      let randomInt = casual.integer(from = 1, to = 11)
+      let randomInt = casual.integer(1,11)
       u.push({n: casual.first_name, s: casual.last_name, lad: dftDate, avatar: randomInt+".jpg"})
       ++i;
-    } while (i<200)
+    } while (i<10)
 
-    u = [];
+// Commenting in the next line will stop autopopulation of random volunteers
+    // u = [];
 
     for (let p of u) {
       mcPeople.insert({
