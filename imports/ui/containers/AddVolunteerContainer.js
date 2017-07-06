@@ -3,7 +3,7 @@ import { insert } from '/imports/collections/mcPeople';
 import AddVolunteer from '../components/AddVolunteer';
 
 function handleSubmit ({ pplName, pplSurname, pplPhone, pplEmail, pplAvatar }) {
-  console.log("handlesSubmit method");
+  console.log("Container handleSubmit method");
   insert.call({
     // check record attendance insert for example
     pplName,
@@ -12,6 +12,10 @@ function handleSubmit ({ pplName, pplSurname, pplPhone, pplEmail, pplAvatar }) {
     pplEmail,
     pplAvatar,
   });
+    // browserHistory.push('/');
+    // return <Redirect push to="/" />
+    // TODO: use the router instead of this brute force 'goto page'
+    window.location.href = '/';
 }
 const AddVolunteerContainer = createContainer(() => {
   return {

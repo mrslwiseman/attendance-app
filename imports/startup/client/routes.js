@@ -15,6 +15,7 @@ export const renderRoutes = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={AttendanceApp}/>
+      <Route exact path="/addvolunteer" component={AddVolunteer} />
       <Route path="*" component={PageNotFound}/>
     </Switch>
   </BrowserRouter>

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class NewVolunteerForm extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { Link, Router, browserHistory } from 'react-router';
+import { Link, Router, browserHistory } from 'react-router-dom';
 
 // import casual from 'casual';            // casual random data generator
 
@@ -18,7 +18,7 @@ class AddVolunteer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("handlesSubmit method");
+    console.log("handleSubmit method");
     this.props.onSubmit({
       pplName: this.pplName.value,
       pplSurname: this.pplSurname.value,
@@ -26,8 +26,6 @@ class AddVolunteer extends React.Component {
       pplEmail: this.pplEmail.value,
       pplAvatar: Math.floor((Math.random() * 10) + 1) + '.jpg',
     });
-    // this.props.$setPristine();
-    browserHistory.push('/');
   }
 
   // handleSubmit(event) {
