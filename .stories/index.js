@@ -9,6 +9,7 @@ import { Welcome } from '@storybook/react/demo';
 import Search from '/imports/ui/components/Search';
 // import AddVolunteer from '/imports/ui/components/AddVolunteer';
 import Avatar from '/imports/ui/components/Avatar';
+import CheckInList from '/imports/ui/components/CheckInList';
 import CheckedInList from '/imports/ui/components/CheckedInList';
 import NewVolunteerForm from '/imports/ui/components/NewVolunteerForm';
 
@@ -21,7 +22,7 @@ storiesOf('Welcome', module)
 
 const pplList = [
   {_id: "1", pplName: "Mike", pplSurname: "King", pplAvatar: "1.jpg"},
-  {_id: "2", pplName: "Joe", pplSurname: "Szili", pplAvatar: "2.jpg"},
+  {_id: "2", pplName: "Joe", pplSurname: "Szili", pplAvatar: "2.jpg", isCheckedIn: false},
 ]
 
 storiesOf('Components', module)
@@ -32,7 +33,7 @@ storiesOf('Components', module)
       firstName="Ed"
       lastName="Sheeran"
       fileName="3.jpg"
-      isCheckedin={false}
+      isCheckedIn={false}
     /> ))
   .add('Avatar - checked in', () => ( 
     <Avatar 
@@ -40,21 +41,29 @@ storiesOf('Components', module)
       firstName="Ed"
       lastName="Sheeran"
       fileName="3.jpg"
-      isCheckedin={true}
+      isCheckedIn={true}
     /> ))
-  .add('CheckedInList - loading', () => ( 
+
+  .add('Check In List', () => ( 
+    <CheckInList 
+      loading={false}
+      ppl={pplList}
+      recordAttendance={() => {alert("recordAttendance()")}}
+    /> ))
+
+  .add('Checked In List - loading', () => ( 
     <CheckedInList 
       loading={true}
       ppl={[]}
       recordAttendance={() => {alert("recordAttendance()")}}
     /> ))
-  .add('CheckedInList - nobody', () => ( 
+  .add('Checked In List - nobody', () => ( 
     <CheckedInList 
       loading={false}
       ppl={[]}
       recordAttendance={() => {alert("recordAttendance()")}}
     /> ))
-  .add('CheckedInList - normal', () => ( 
+  .add('Checked In List - normal', () => ( 
     <CheckedInList 
       loading={false}
       ppl={pplList}

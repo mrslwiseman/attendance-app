@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
+require('rc-slider/assets/index.css');
+
 import Avatar from './Avatar';
 import Search from './Search';
-import Modal from 'react-modal';
 import Slider from 'rc-slider';
-require('rc-slider/assets/index.css');
 // import { Input } from 'semantic-ui-react';
 
 //============================================================================//
@@ -70,7 +71,7 @@ const marks = {
 };
 
 
-class CheckinList extends React.Component {
+class CheckInList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -149,7 +150,7 @@ class CheckinList extends React.Component {
                 _id={_id}
                 firstName={pplName}
                 lastName={pplSurname}
-                isCheckedin={isCheckedIn}
+                isCheckedIn={isCheckedIn}
                 fileName={pplAvatar}
               />
             </div>
@@ -168,7 +169,7 @@ class CheckinList extends React.Component {
                 _id={this.state._id}
                 firstName={this.state.name}
                 lastName={this.state.surname}
-                isCheckedin={isCheckedIn}
+                isCheckedIn={isCheckedIn}
                 fileName={this.state.avatar}
               />
               <label>Check In Hours</label>
@@ -204,10 +205,10 @@ class CheckinList extends React.Component {
   }
 }
 
-CheckinList.propTypes = {
+CheckInList.propTypes = {
   loading: PropTypes.bool.isRequired,
   ppl: PropTypes.array.isRequired,
   recordAttendance: PropTypes.func.isRequired
 };
 
-export default CheckinList;
+export default CheckInList;
