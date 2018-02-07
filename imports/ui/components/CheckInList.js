@@ -144,14 +144,14 @@ class CheckInList extends React.Component {
         </div>
         
         <div className={'ui relaxed list flow'}>
-          {this.props.ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
-            <div key={_id} onClick={() => this.openModal(_id, pplName, pplSurname, pplAvatar)}>
+          {this.props.ppl.map(({ _id, firstname, surname, avatar }) => (
+            <div key={_id} onClick={() => this.openModal(_id, firstname, surname, avatar)}>
               <Avatar
                 _id={_id}
-                firstName={pplName}
-                lastName={pplSurname}
+                firstName={firstname}
+                lastName={surname}
                 isCheckedIn={isCheckedIn}
-                fileName={pplAvatar}
+                fileName={avatar}
               />
             </div>
           ))}

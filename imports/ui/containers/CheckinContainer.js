@@ -1,14 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import CheckInList from '../components/CheckInList';
-import mcPeople , {insert, remove} from '/imports/collections/mcPeople';
-import mcAttendances from '/imports/collections/mcAttendances'
+import People , {insert, remove} from '/imports/collections/People';
+import Attendances from '/imports/collections/Attendances'
 import * as sg from 'sugar';              // sugar utility
 
 function recordAttendance(person_id, hours) {
 
   // put attendance record
-  mcAttendances.insert({
+  Attendances.insert({
     atnPersonID: person_id,
     atnDate: sg.Date.create('today'),
     atnHours: hours
@@ -17,9 +17,9 @@ function recordAttendance(person_id, hours) {
   // update last attended date for the person
   let updateDoc = {}
   updateDoc._id = person_id;
-  updateDoc.pplLastAtn = sg.Date.create('today');
+  updateDoc.lastIn = sg.Date.create('today');
 
-  mcPeople.update(
+  People.update(
     person_id, 
     {$set: updateDoc}
   );
@@ -29,7 +29,7 @@ function recordAttendance(person_id, hours) {
 const CheckinContainer = createContainer(() => {
   const peopleHandle = Meteor.subscribe('ready.for.checkin');
   const loading = ! peopleHandle.ready();
-  const ppl = mcPeople.find({pplLastAtn: {$ne: sg.Date.create('today')}}, { sort: { pplLastAtn: 1, pplSurname: -1} }).fetch();
+  const ppl = People.find({lastIn: {$ne: sg.Date.create('today')}}, { sort: { lastIn: 1, surname: -1} }).fetch();
 
   return {
     loading,

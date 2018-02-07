@@ -1,6 +1,6 @@
 //import '/imports/startup/server';
-import mcPeople from '/imports/collections/mcPeople';
-import mcAttendances from '/imports/collections/mcAttendances'
+import People from '/imports/collections/People';
+import Attendances from '/imports/collections/Attendances'
 
 import { Meteor } from 'meteor/meteor'; // base
 import sugar from 'sugar';              // sugar utility
@@ -11,7 +11,7 @@ Meteor.startup(() => {
   // seed ensures same data is generated
   casual.seed(1066);
 
-  if (mcPeople.find().count() === 0) {
+  if (People.find().count() === 0) {
     var dftDate = sugar.Date.create('yesterday');
     var u = [
       {n: "Joseph",s: "Szili", lad: sugar.Date.create('today'), avatar: "1.jpg"},
@@ -29,11 +29,12 @@ Meteor.startup(() => {
     // u = [];
 
     for (let p of u) {
-      mcPeople.insert({
-        pplName: p.n,
-        pplSurname: p.s,
-        pplLastAtn: p.lad,
-        pplAvatar: p.avatar
+      People.insert({
+        firstname: p.n,
+        surname: p.s,
+        lastIn: p.lad,
+        avatar: p.avatar,
+        isCheckedIn: false,
       });
     }
   };

@@ -5,22 +5,16 @@ import { Mongo } from 'meteor/mongo';
 import * as sg from 'sugar';              // sugar utility
 
 // note: mc prefix = MongoCollection
-const mcPeople = new Mongo.Collection('people');
+const People = new Mongo.Collection('people');
 
-mcPeople.attachSchema(new SimpleSchema({
-  pplID: {
-    type: String,
-    label: "Person ID",
-    max: 15,
-    optional: true
-  },
-  pplName: {
+People.attachSchema(new SimpleSchema({
+  firstname: {
     type: String,
     label: "Name",
     max: 128,
     optional: false
   },
-  pplSurname: {
+  surname: {
     type: String,
     label: "Surname",
     max: 128,
@@ -56,12 +50,12 @@ mcPeople.attachSchema(new SimpleSchema({
     defaultValue: false,
 		optional: true
   },
-  pplLastAtn: {
+  lastIn: {
     type: Date,
     label: "Last Attended Date",
     optional: false
   },
-  pplAvatar: {
+  avatar: {
     type: String,
     label: "Avatar file name",
     optional: true
@@ -71,35 +65,35 @@ mcPeople.attachSchema(new SimpleSchema({
 const insert = new ValidatedMethod({
   name: 'people.insert',
   validate: new SimpleSchema({
-    pplName: { type: String },
-    pplSurname: { type: String },
+    firstname: { type: String },
+    surname: { type: String },
     pplPhone: { type: String },
     pplEmail: { type: String },
-    pplAvatar: { type: String, optional: true },
+    avatar: { type: String, optional: true },
   }).validator(),
   run(data) {
     const {
-      pplName,
-      pplSurname,
+      firstname,
+      surname,
       pplPhone,
       pplEmail,
-      pplAvatar,
+      avatar,
     } = data;
 
     const doc = {
-      pplName,
-      pplSurname,
+      firstname,
+      surname,
       pplPhone,
       pplEmail,
-      pplAvatar,
-      pplLastAtn: sg.Date.create('yesterday'),
+      avatar,
+      lastIn: sg.Date.create('yesterday'),
     };
 
     console.log("Here is the data:" , data);
     console.log("Here is the doc:", doc);
     // console.log(data, doc);
 
-    mcPeople.insert(doc);
+    People.insert(doc);
   },
 });
 
@@ -109,9 +103,9 @@ const remove = new ValidatedMethod({
     _id: { type: String },
   }).validator(),
   run({ _id }) {
-    mcPeople.remove(_id);
+    People.remove(_id);
   },
 });
 
-export default mcPeople;
+export default People;
 export { insert, remove };

@@ -15,7 +15,7 @@ export default createContainer(() => {
 
   const loading = !handle.ready()
   
-  const volunteers = mcPeople.find().fetch();
+  const volunteers = People.find().fetch();
 
   return {
     searchQuery,

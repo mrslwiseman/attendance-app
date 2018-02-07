@@ -6,7 +6,7 @@ import { Link, Router, browserHistory } from 'react-router-dom';
 
 // import NewVolunteerForm from './NewVolunteerForm';
 
-import mcPeople from '/imports/collections/mcPeople';
+import People from '/imports/collections/People';
 
 var transitionTo = Router.transitionTo;
 
@@ -20,11 +20,11 @@ class AddVolunteer extends React.Component {
     event.preventDefault();
     console.log("handleSubmit method");
     this.props.onSubmit({
-      pplName: this.pplName.value,
-      pplSurname: this.pplSurname.value,
+      firstname: this.firstname.value,
+      surname: this.surname.value,
       pplPhone: this.pplPhone.value,
       pplEmail: this.pplEmail.value,
-      pplAvatar: Math.floor((Math.random() * 10) + 1) + '.jpg',
+      avatar: Math.floor((Math.random() * 10) + 1) + '.jpg',
     });
   }
 
@@ -42,9 +42,9 @@ class AddVolunteer extends React.Component {
             <h1>New Volunteer Signup Form</h1>
             <h2>Your Details</h2>
             <form name="newVolunteer" onSubmit={this.handleSubmit} className="commentForm">
-              <input ref={c => (this.pplName = c)} type="text" id="pplName" placeholder="First name" />
+              <input ref={c => (this.firstname = c)} type="text" id="firstname" placeholder="First name" />
 
-              <input ref={c => (this.pplSurname = c)} type="text" id="pplSurname" placeholder="Surname" />
+              <input ref={c => (this.surname = c)} type="text" id="surname" placeholder="Surname" />
 
               <input ref={c => (this.pplPhone = c)} type="text" id="pplPhone" placeholder="Phone" />
 

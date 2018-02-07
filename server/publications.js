@@ -1,38 +1,38 @@
 import { Meteor } from 'meteor/meteor';
-import mcPeople from '/imports/collections/mcPeople';
-import mcAttendances from '/imports/collections/mcAttendances';
+import People from '/imports/collections/People';
+import Attendances from '/imports/collections/Attendances';
 import * as sg from 'sugar';              // sugar utility
 
 // Pubs of People data
 Meteor.publish('everyone', function() {
-  return mcPeople.find({}, { sort: { pplLastAtn: 1, pplSurname: 1 } });
+  return People.find({}, { sort: { lastIn: 1, surname: 1 } });
 });
 
 Meteor.publish("ready.for.checkin", function () {
-  return mcPeople.find({pplLastAtn: {$ne: sg.Date.create('today')}}, { sort: { pplLastAtn: -1, pplSurname: 1 }} );
+  return People.find({lastIn: {$ne: sg.Date.create('today')}}, { sort: { lastIn: -1, surname: 1 }} );
 });
 
 Meteor.publish("checked.in", function () {
-  return mcPeople.find({pplLastAtn: {$eq: sg.Date.create('today')}} , { sort: { pplLastAtn: -1, pplSurname: 1 }} );
+  return People.find({lastIn: {$eq: sg.Date.create('today')}} , { sort: { lastIn: -1, surname: 1 }} );
 });
 
 // Pubs of Attendance data
 Meteor.publish("all.attendances", function () {
-  return mcAttendances.find({}, { sort: { atnDate: 0, pplSurname: 1 }} );
+  return Attendances.find({}, { sort: { atnDate: 0, surname: 1 }} );
 });
 
 Meteor.publish("volunteers", function(search) {
 
   let query = {},
-  projection = {limit: 10, sort: {pplName: 1}};
+  projection = {limit: 10, sort: {firstname: 1}};
   
   if(search){
     let regex = new RegExp(search, 'i');
 
     query = {
       $or: [
-        {pplName: regex},
-        {pplSurname: regex}
+        {firstname: regex},
+        {surname: regex}
       ]
     };
 

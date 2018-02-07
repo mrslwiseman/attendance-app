@@ -34,14 +34,14 @@ function CheckedInList(props) {
     >
       <h2>Checked In Today</h2>
       <div className={'ui relaxed list flow'}        >
-        {ppl.map(({ _id, pplName, pplSurname, pplAvatar, isCheckedIn}) => (
+        {ppl.map(({ _id, firstname, surname, avatar, isCheckedIn}) => (
           <div key={_id}>
             <Avatar
               _id={_id}
-              firstName={pplName}
-              lastName={pplSurname}
+              firstName={firstname}
+              lastName={surname}
               isCheckedIn={isCheckedIn}
-              fileName={pplAvatar}
+              fileName={avatar}
             />
           </div>
         ))}

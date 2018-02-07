@@ -1,16 +1,16 @@
 import { createContainer } from 'meteor/react-meteor-data';
-import { insert } from '/imports/collections/mcPeople';
+import { insert } from '/imports/collections/People';
 import AddVolunteer from '../components/AddVolunteer';
 
-function handleSubmit ({ pplName, pplSurname, pplPhone, pplEmail, pplAvatar }) {
+function handleSubmit ({ firstname, surname, pplPhone, pplEmail, avatar }) {
   console.log("Container handleSubmit method");
   insert.call({
     // check record attendance insert for example
-    pplName,
-    pplSurname,
+    firstname,
+    surname,
     pplPhone,
     pplEmail,
-    pplAvatar,
+    avatar,
   });
     // browserHistory.push('/');
     // return <Redirect push to="/" />

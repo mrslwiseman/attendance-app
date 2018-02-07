@@ -25,8 +25,8 @@ storiesOf('Welcome', module)
   ))
 
 const pplList = [
-  {_id: "1", pplName: "Mike", pplSurname: "King", pplAvatar: "1.jpg"},
-  {_id: "2", pplName: "Joe", pplSurname: "Szili", pplAvatar: "2.jpg", isCheckedIn: false},
+  {_id: "1", firstname: "Mike", surname: "King", avatar: "1.jpg"},
+  {_id: "2", firstname: "Joe", surname: "Szili", avatar: "2.jpg", isCheckedIn: false},
 ]
 
 storiesOf('Components', module)
