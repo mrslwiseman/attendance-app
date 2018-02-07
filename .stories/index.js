@@ -1,24 +1,26 @@
-import React from 'react';
+import React from 'react'
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import { linkTo } from '@storybook/addon-links'
 
-import { Welcome } from '@storybook/react/demo';
+import { Welcome } from '@storybook/react/demo'
+import { Link, Router, browserHistory } from 'react-router-dom'
+import StoryRouter from 'storybook-router'
 
-import Search from '/imports/ui/components/Search';
-// import AddVolunteer from '/imports/ui/components/AddVolunteer';
-import Avatar from '/imports/ui/components/Avatar';
-import CheckInList from '/imports/ui/components/CheckInList';
-import CheckedInList from '/imports/ui/components/CheckedInList';
-import NewVolunteerForm from '/imports/ui/components/NewVolunteerForm';
+import Search from '/imports/ui/components/Search'
+// import AddVolunteer from '/imports/ui/components/AddVolunteer'
+import Avatar from '/imports/ui/components/Avatar'
+import CheckInList from '/imports/ui/components/CheckInList'
+import CheckedInList from '/imports/ui/components/CheckedInList'
+import NewVolunteerForm from '/imports/ui/components/NewVolunteerForm'
 
 
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')}/>
-  ));
+  ))
 
 const pplList = [
   {_id: "1", pplName: "Mike", pplSurname: "King", pplAvatar: "1.jpg"},
@@ -26,7 +28,8 @@ const pplList = [
 ]
 
 storiesOf('Components', module)
-  // .add('AddVolunteer', () => ( <AddVolunteer /> ))
+  .addDecorator(StoryRouter())
+  //.add('AddVolunteer', () => ( <AddVolunteer /> ))
   .add('Avatar - checked out', () => ( 
     <Avatar 
       _id="aab45bb"
@@ -45,11 +48,14 @@ storiesOf('Components', module)
     /> ))
 
   .add('Check In List', () => ( 
-    <CheckInList 
-      loading={false}
-      ppl={pplList}
-      recordAttendance={() => {alert("recordAttendance()")}}
-    /> ))
+    <Router>
+      <CheckInList 
+        loading={false}
+        ppl={pplList}
+        recordAttendance={() => {alert("recordAttendance()")}}
+      /> 
+    </Router>
+    ))
 
   .add('Checked In List - loading', () => ( 
     <CheckedInList 
