@@ -20,3 +20,25 @@ Meteor.publish("checked.in", function () {
 Meteor.publish("all.attendances", function () {
   return mcAttendances.find({}, { sort: { atnDate: 0, pplSurname: 1 }} );
 });
+
+Meteor.publish("volunteers", function(search) {
+
+  let query = {},
+  projection = {limit: 10, sort: {pplName: 1}};
+  
+  if(search){
+    let regex = new RegExp(search, 'i');
+
+    query = {
+      $or: [
+        {pplName: regex},
+        {pplSurname: regex}
+      ]
+    };
+
+    projection.limit = 100;
+  }
+
+  return volunteer.find(query, projection)
+  
+});

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Avatar from './Avatar';
 
 
@@ -25,21 +26,21 @@ function CheckedInList(props) {
     );
   }
 
-  const isCheckedIn = true;
+  // const isCheckedIn = true;
   return (
     <div 
-      className={'column padded'}
+      className={'three wide column'}
       style={{backgroundColor: 'WhiteSmoke'}} 
     >
       <h2>Checked In Today</h2>
-      <div className={'ui relaxed list'}        >
-        {ppl.map(({ _id, pplName, pplSurname, pplAvatar }) => (
+      <div className={'ui relaxed list flow'}        >
+        {ppl.map(({ _id, pplName, pplSurname, pplAvatar, isCheckedIn}) => (
           <div key={_id}>
             <Avatar
               _id={_id}
               firstName={pplName}
               lastName={pplSurname}
-              isCheckedin={isCheckedIn}
+              isCheckedIn={isCheckedIn}
               fileName={pplAvatar}
             />
           </div>
