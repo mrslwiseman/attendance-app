@@ -7,8 +7,8 @@
     "lint": "eslint .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-	"app-test": "meteor test --once --port 3040 --driver-package practicalmeteor:mocha",
-	"app-test:watch": "TEST_WATCH=1 meteor test --port 3040 --driver-package practicalmeteor:mocha",
+	"app-test": "meteor test --once --port 3040 --driver-package meteortesting:mocha",
+	"app-test:watch": "TEST_WATCH=1 meteor test --port 3040 --driver-package meteortesting:mocha",
     "pretest": "npm run lint --silent"
   },
   "description": "Workshop attendance app for back2bikes volunteers.",

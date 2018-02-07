@@ -31,3 +31,4 @@ practicalmeteor:chai
 session@1.1.7
 dynamic-import
 babel-compiler
+meteortesting:mocha
