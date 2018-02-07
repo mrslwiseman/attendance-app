@@ -3,10 +3,12 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { linkTo } from '@storybook/addon-links'
-
 import { Welcome } from '@storybook/react/demo'
-import { Link, Router, browserHistory } from 'react-router-dom'
 import StoryRouter from 'storybook-router'
+
+import { Link, Router, browserHistory } from 'react-router-dom'
+import { Grid, Container, Segment } from 'semantic-ui-react'
+// import '/client/semantic.css'
 
 import Search from '/imports/ui/components/Search'
 // import AddVolunteer from '/imports/ui/components/AddVolunteer'

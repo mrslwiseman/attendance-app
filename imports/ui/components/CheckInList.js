@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
-require('rc-slider/assets/index.css');
+import React from 'react'
+import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
+import Modal from 'react-modal'
+require('rc-slider/assets/index.css')
 
-import Avatar from './Avatar';
-import Search from './Search';
-import Slider from 'rc-slider';
-// import { Input } from 'semantic-ui-react';
+import Avatar from './Avatar'
+import Search from './Search'
+import Slider from 'rc-slider'
+// import { Input } from 'semantic-ui-react'
 
 //============================================================================//
 // A word about react-modal
@@ -37,7 +37,7 @@ const customStyles = {
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)'
   }
-};
+}
 
 const style = {fontSize: 20}
 
@@ -68,12 +68,12 @@ const marks = {
     label: <strong>6</strong>
   }
   
-};
+}
 
 
 class CheckInList extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       modalIsOpen: false,
       _id: "",
@@ -81,11 +81,11 @@ class CheckInList extends React.Component {
       surname: "",
       avatar: "",
       hours: 2
-    };
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.clickConfirm = this.clickConfirm.bind(this);
-    this.handleInput = this.handleInput.bind(this);
+    }
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+    this.clickConfirm = this.clickConfirm.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
   // Modal handlers
@@ -94,18 +94,18 @@ class CheckInList extends React.Component {
     this.setState({name: name})
     this.setState({surname: surname})
     this.setState({avatar: avatar})
-    this.setState({modalIsOpen: true});
+    this.setState({modalIsOpen: true})
   }
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({modalIsOpen: false})
   }
   clickConfirm(person_id, hours) {
     this.props.recordAttendance(person_id, hours)
-    this.closeModal();
+    this.closeModal()
   }
 
   handleInput(v) {
-    console.log(v);
+    console.log(v)
     this.setState({hours: v})
   }
 
@@ -114,7 +114,7 @@ class CheckInList extends React.Component {
     if (this.props.loading) {
       return (
         <p>Loading...</p>
-      );
+      )
     }
 
     if (this.props.ppl.length === 0) {
@@ -123,10 +123,10 @@ class CheckInList extends React.Component {
           <p>No one to check in!</p>
           <Link className={'ui button'} to="/addvolunteer">Add new volunteer </Link>
         </div>
-      );
+      )
     }
 
-    const isCheckedIn = false;
+    const isCheckedIn = false
 
     return (
       <div
@@ -201,7 +201,7 @@ class CheckInList extends React.Component {
         </div>
 
       </div>
-    );
+    )
   }
 }
 
@@ -209,6 +209,6 @@ CheckInList.propTypes = {
   loading: PropTypes.bool.isRequired,
   ppl: PropTypes.array.isRequired,
   recordAttendance: PropTypes.func.isRequired
-};
+}
 
-export default CheckInList;
+export default CheckInList
