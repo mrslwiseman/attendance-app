@@ -25,6 +25,9 @@ react-meteor-data
 semantic:ui
 less@2.7.9
 juliancwirko:postcss
+practicalmeteor:mocha
+xolvio:cleaner
+practicalmeteor:chai
 session@1.1.7
 dynamic-import
 babel-compiler

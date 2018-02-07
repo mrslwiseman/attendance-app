@@ -6,12 +6,11 @@ import { BrowserRouter, HashRouter, Route, Switch, Link, Redirect } from 'react-
 
 // route components
 import AttendanceApp from '/imports/ui/layouts/AttendanceApp.js';
-import PageNotFound from '/imports/ui/pages/PageNotFound.js';
+import NotFoundPage from '/imports/ui/pages/NotFoundPage.js';
 import HomePage from '/imports/ui/pages/HomePage.js';
 import AddVolunteer from '/imports/ui/containers/AddVolunteerContainer.js';
 
 export const renderRoutes = () => (
-
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={AttendanceApp}/>
