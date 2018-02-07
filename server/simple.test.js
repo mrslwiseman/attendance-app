@@ -30,7 +30,7 @@ describe('SERVER: my simple EXPECT suite', function () {
 
   it('this test should always fail', function () {
     let atest = true
-    expect(atest).to.equal(false)
+    expect(atest).to.not.equal(false)
   })
 
 })

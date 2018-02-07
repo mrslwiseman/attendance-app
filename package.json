@@ -7,6 +7,8 @@
     "lint": "eslint .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+	"app-test": "meteor test --once --port 3040 --driver-package practicalmeteor:mocha",
+	"app-test:watch": "TEST_WATCH=1 meteor test --port 3040 --driver-package practicalmeteor:mocha",
     "pretest": "npm run lint --silent"
   },
   "description": "Workshop attendance app for back2bikes volunteers.",
@@ -50,7 +52,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-meteor": "^4.0.0",
     "eslint-plugin-react": "^6.2.0",
-    "react-addons-test-utils": "^15.3.2"
+    "react-addons-test-utils": "^15.3.2",
     "storybook-router": "^0.3.2"
   },
   "postcss": {
