@@ -50,13 +50,11 @@ storiesOf('Components', module)
     /> ))
 
   .add('Check In List', () => ( 
-    <Router>
       <CheckInList 
         loading={false}
         ppl={pplList}
         recordAttendance={() => {alert("recordAttendance()")}}
       /> 
-    </Router>
     ))
 
   .add('Checked In List - loading', () => ( 
