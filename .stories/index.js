@@ -8,10 +8,12 @@ import StoryRouter from 'storybook-router'
 
 import { Link, Router, browserHistory } from 'react-router-dom'
 import { Grid, Container, Segment } from 'semantic-ui-react'
-// import '/client/semantic.css'
+import '/client/semantic.css'
 
 import Search from '/imports/ui/components/Search'
 // import AddVolunteer from '/imports/ui/components/AddVolunteer'
+import NewVolunteer from '/imports/ui/components/add-volunteer'
+import Steps from '/imports/ui/components/2-steps'
 import Avatar from '/imports/ui/components/Avatar'
 import CheckInList from '/imports/ui/components/CheckInList'
 import CheckedInList from '/imports/ui/components/CheckedInList'
@@ -31,7 +33,7 @@ const pplList = [
 
 storiesOf('Components', module)
   .addDecorator(StoryRouter())
-  //.add('AddVolunteer', () => ( <AddVolunteer /> ))
+  // .add('AddVolunteer', () => ( <AddVolunteer /> ))
   .add('Avatar - checked out', () => ( 
     <Avatar 
       _id="aab45bb"
@@ -76,4 +78,6 @@ storiesOf('Components', module)
       recordAttendance={() => {alert("recordAttendance()")}}
     /> ))
   .add('NewVolunteerForm', () => ( <NewVolunteerForm /> ))
+  .add('NewVolunteer', () => ( <NewVolunteer /> ))
+  .add('Steps', () => ( <Steps /> ))
   .add('Search', () => ( <Search /> ))
