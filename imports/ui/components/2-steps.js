@@ -8,8 +8,51 @@ const step1schema = {
   type: "object",
   required: ["name"],
   properties: {
-  	name: {type: "string", minLength: 3},
-    email: {type: "string", format: "email", title: "Email"},
+  	name: {type: "string", minLength: 3, title: "My name is"},
+    email: {type: "string", format: "email", title: "and my email is"},
+    location: {
+      type: "string", 
+      title: "working in",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "NY"
+          ],
+          "title": "New York"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "UK - London"
+          ],
+          "title": "London"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "UK - Brum"
+          ],
+          "title": "Birmingham"
+        }
+      ],
+
+    },
+    duration: {
+      type: "string", 
+      title: "I've been working in the industry for",
+      placeHolder: "choose studio",
+      "anyOf": [
+        {"type": "string","enum": ["1-3"],"title": "1-3 years"},
+        {"type": "string","enum": ["3-5"],"title": "3-5 years"},
+        {"type": "string","enum": ["5+"],"title": "5+ years"},
+      ],
+    },
+    gender: {
+      type: "string",
+      title: "I am a",
+      placeHolder: "choose gender",
+    }
   }
 }
 
