@@ -55,6 +55,11 @@ const step1schema = {
     }
   }
 }
+const step1ui = {
+  location: {
+   "ui:placeholder": "eg London"
+  }
+}
 
 const step2schema = {
   title: "Step 2",
@@ -63,6 +68,9 @@ const step2schema = {
   properties: {
     age: {type: "integer"}
   }
+}
+const step2ui = {
+  
 }
 
 const step3schema = {
@@ -73,11 +81,14 @@ const step3schema = {
     interests: {type: "string"}
   }
 }
+const step3ui = {
+  
+}
 
 const steps = [
-  step1schema,
-  step2schema,
-  step3schema
+  { schema: step1schema, ui: step1ui },
+  { schema: step2schema, ui: step2ui },
+  { schema: step3schema, ui: step3ui },
 ]
 
 class Steps extends React.Component {
@@ -116,7 +127,8 @@ class Steps extends React.Component {
   render() {
     return (
       <Form 
-        schema={steps[this.state.step-1]}
+        schema={steps[this.state.step-1].schema}
+        uiSchema={steps[this.state.step-1].ui}
         onSubmit={this.onSubmit}
         formData={this.state.formData}>
         <div>
