@@ -9,7 +9,8 @@
     "build-ui-test": "BABEL_ENV=ui-test build-storybook",
     "app-test": "meteor test --once --port 3040 --driver-package meteortesting:mocha",
     "app-test:watch": "TEST_WATCH=1 meteor test --port 3040 --driver-package meteortesting:mocha",
-    "pretest": "npm run lint --silent"
+    "pretest": "npm run lint --silent",
+    "parse": "node scripts/survey-parser.js docs/sample-survey.txt"
   },
   "description": "Workshop attendance app for back2bikes volunteers.",
   "directories": {
@@ -21,6 +22,7 @@
     "casual": "^1.5.14",
     "indexof": "0.0.1",
     "lodash": "^4.15.0",
+    "minimist": "^1.2.0",
     "rc-slider": "^8.1.3",
     "react": "^16.2.0",
     "react-addons-pure-render-mixin": "^15.6.0",
