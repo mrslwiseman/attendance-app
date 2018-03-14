@@ -10,16 +10,62 @@ var opts = require('minimist')(process.argv.slice(2))
 const debug = require('debug')('survey:parser')
 
 const surveyfile = opts._[0] || "docs/sample-survey.txt";
+const outfile = opts._[1] || "docs/sample-survey.js";
 
+const newSection = function(title) {
+	debug("newSection",title)
+	if (survey.current.six === -1) {
+		survey.current.six = 0
+	} else {
+		survey.current.six = survey.current.six + 1
+	}
+	if (!survey.sections[survey.current.six]) {
+		survey.sections.push({ title, questions: [], type: "section" })
+	}
+	section = survey.sections[survey.current.six]
+	survey.current.object = section
+	survey.current.section = section
+}
+
+const newQuestion = function(label) {
+	debug("newQuestion",label)
+	if (!section) {
+		newSection("Default Section")
+	}
+	const q = { label, type: "question", attributes: [] }
+	survey.current.object = q
+	survey.current.q = q
+	section.questions.push(q)
+}
+
+const newAttribute = function(title) {
+	debug("newAttribute",title)
+	if (survey.current.q.type !== 'question') {
+		console.error(`Error: found an attribute [${title}] before a question`,survey.current.q)
+	} else {
+		const a = { title, type: "attribute" }
+		survey.current.q.attributes.push(a)
+		survey.current.object = a
+		survey.current.a = a
+	}
+}
+
+const addModifier = function(key,value) {
+	survey.current.object[key] = value
+}
+ 
 const directives = {
 	section: {
-		regex: /^section:(.*)/i,
+		regex: /^section:\s*(.*)/i,
+		action: newSection,
 	},
 	question: {
 		regex: /^q\s+(.*)/i,
+		action: newQuestion,
 	},
 	attribute: {
 		regex: /^a\s+(.*)/i,
+		action: newAttribute,
 	},
 }
 
@@ -44,13 +90,15 @@ const modifiers = {
 	}
 }
 
-const setPrompt = function(prompt) {
-
+const when = new Date()
+const survey = {
+	sections:[],
+	current: {six: -1},
+	info: {
+		surveyfile, outfile, when
+	}
 }
-
-const setIf = function(expression) {
-
-}
+let section
 
 fs.readFile(surveyfile, 'utf8', (err, data) => {
 	if (err) throw err
@@ -68,10 +116,15 @@ fs.readFile(surveyfile, 'utf8', (err, data) => {
 // Look for directives:
 		Object.keys(directives).forEach(d => {
 			const directive = directives[d]
-			if (l.match(directive.regex)) {
+			const match = l.match(directive.regex)
+			if (match) {
 				mode = d
-				debug(`Mode=${mode}`)
+				debug(`Mode=${mode}`,directive)
 				done = true
+				if (directive.action) {
+					debug("Calling action method for "+`${match[1]}`)
+					directive.action(`${match[1]}`)
+				}
 			}
 		})		
 		if (!done) {
@@ -84,11 +137,16 @@ fs.readFile(surveyfile, 'utf8', (err, data) => {
 				const value = matches[2]
 				if (!modifiers[mode][key]) {
 					errs.push(`Error at line ${(ix+1)}: Invalid modifier [${l}] for mode [${mode}]`)
+				} else {
+					addModifier(matches[1],matches[2])
 				}
 				done = true
       }
 		}
 	})
 	debug(errs)
+// Remove working data inside survey structure
+	delete survey.current	
+	fs.writeFileSync(outfile,JSON.stringify(survey,null,2)+';\n')
 })
 
