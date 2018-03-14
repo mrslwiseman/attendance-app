@@ -2,6 +2,19 @@
 #
 # This is a sample survey file
 #
+
+List: manufacturers
+  A Mercedes
+  A BMW
+  A Ford
+  A Honda
+
+List: bmw_cars
+  A X1
+  A X3
+  A X5
+  A 635 M
+  +value=M635
 	
 Section: About you
   +flow=inline

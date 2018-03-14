@@ -158,9 +158,56 @@
       "type": "section"
     }
   ],
+  "lists": [
+    {
+      "title": "manufacturers",
+      "attributes": [
+        {
+          "title": "Mercedes",
+          "type": "attribute"
+        },
+        {
+          "title": "BMW",
+          "type": "attribute"
+        },
+        {
+          "title": "Ford",
+          "type": "attribute"
+        },
+        {
+          "title": "Honda",
+          "type": "attribute"
+        }
+      ],
+      "type": "list"
+    },
+    {
+      "title": "bmw_cars",
+      "attributes": [
+        {
+          "title": "X1",
+          "type": "attribute"
+        },
+        {
+          "title": "X3",
+          "type": "attribute"
+        },
+        {
+          "title": "X5",
+          "type": "attribute"
+        },
+        {
+          "title": "635 M",
+          "type": "attribute",
+          "value": "M635"
+        }
+      ],
+      "type": "list"
+    }
+  ],
   "info": {
     "surveyfile": "docs/sample-survey.txt",
     "outfile": "docs/sample-survey.js",
-    "when": "2018-03-14T22:01:48.543Z"
+    "when": "2018-03-14T22:39:31.804Z"
   }
 };

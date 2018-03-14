@@ -27,6 +27,21 @@ const newSection = function(title) {
 	survey.current.section = section
 }
 
+const newList = function(title) {
+	debug("newList",title)
+	if (survey.current.lix === -1) {
+		survey.current.lix = 0
+	} else {
+		survey.current.lix = survey.current.lix + 1
+	}
+	if (!survey.lists[survey.current.lix]) {
+		survey.lists.push({ title, attributes: [], type: "list" })
+	}
+	const list = survey.lists[survey.current.lix]
+	survey.current.object = list
+	survey.current.q = list
+}
+
 const newQuestion = function(label) {
 	debug("newQuestion",label)
 	if (!section) {
@@ -40,7 +55,7 @@ const newQuestion = function(label) {
 
 const newAttribute = function(title) {
 	debug("newAttribute",title)
-	if (survey.current.q.type !== 'question') {
+	if (!['question','list'].includes(survey.current.q.type)) {
 		console.error(`Error: found an attribute [${title}] before a question`,survey.current.q)
 	} else {
 		const a = { title, type: "attribute" }
@@ -55,6 +70,10 @@ const addModifier = function(key,value) {
 }
  
 const directives = {
+	list: {
+		regex: /^list:\s*(.*)/i,
+		action: newList,
+	},
 	section: {
 		regex: /^section:\s*(.*)/i,
 		action: newSection,
@@ -93,7 +112,8 @@ const modifiers = {
 const when = new Date()
 const survey = {
 	sections:[],
-	current: {six: -1},
+	lists: [],
+	current: {six: -1, lix: -1},
 	info: {
 		surveyfile, outfile, when
 	}
