@@ -4,13 +4,13 @@
 //
 // Survey Parser utility - simple parser to extract the definitions from a survey file
 //
-var fs = require('fs');
+var fs = require('fs')
 var opts = require('minimist')(process.argv.slice(2))
 
 const debug = require('debug')('survey:parser')
 
-const surveyfile = opts._[0] || "docs/sample-survey.txt";
-const outfile = opts._[1] || "docs/sample-survey.js";
+const surveyfile = opts._[0] || "docs/sample-survey.txt"
+const outfile = opts._[1] || "docs/sample-survey.js"
 
 const newSection = function(title) {
 	debug("newSection",title)
@@ -20,7 +20,7 @@ const newSection = function(title) {
 		survey.current.six = survey.current.six + 1
 	}
 	if (!survey.sections[survey.current.six]) {
-		survey.sections.push({ title, questions: [], type: "section" })
+		survey.sections.push({ title, questions: [], objectType: "section" })
 	}
 	section = survey.sections[survey.current.six]
 	survey.current.object = section
@@ -35,7 +35,7 @@ const newList = function(title) {
 		survey.current.lix = survey.current.lix + 1
 	}
 	if (!survey.lists[survey.current.lix]) {
-		survey.lists.push({ title, attributes: [], type: "list" })
+		survey.lists.push({ title, attributes: [], objectType: "list" })
 	}
 	const list = survey.lists[survey.current.lix]
 	survey.current.object = list
@@ -47,7 +47,7 @@ const newQuestion = function(label) {
 	if (!section) {
 		newSection("Default Section")
 	}
-	const q = { label, type: "question", attributes: [] }
+	const q = { label, objectType: "question", attributes: [] }
 	survey.current.object = q
 	survey.current.q = q
 	section.questions.push(q)
@@ -55,10 +55,10 @@ const newQuestion = function(label) {
 
 const newAttribute = function(title) {
 	debug("newAttribute",title)
-	if (!['question','list'].includes(survey.current.q.type)) {
+	if (!['question','list'].includes(survey.current.q.objectType)) {
 		console.error(`Error: found an attribute [${title}] before a question`,survey.current.q)
 	} else {
-		const a = { title, type: "attribute" }
+		const a = { title, objectType: "attribute" }
 		survey.current.q.attributes.push(a)
 		survey.current.object = a
 		survey.current.a = a
@@ -94,9 +94,11 @@ const modifiers = {
 	},
 	section: {
 		flow: 1,
+		info: 1,
 	},
 	question: {
 		prompt: 1,
+		label: 1,
 		if: 1,
 		type: 1,
 		placeholder: 1,
@@ -125,7 +127,7 @@ fs.readFile(surveyfile, 'utf8', (err, data) => {
 
 	const errs = []
 	let mode = ''
-	// console.log(data.toString('utf8'));
+	// console.log(data.toString('utf8'))
 	const lines = data.split(/\n/)
 
 // Iterate over the lines in the file
@@ -151,12 +153,12 @@ fs.readFile(surveyfile, 'utf8', (err, data) => {
       let matches = l.match(/^\+(\w+)=(.*)/i)
       if (matches) {
       	if (!matches[2])
-      		errs.push(`Error at line ${(ix+1)}: Missing modifier value at (+${matches[1]}=)`)
+      		errs.push(`${surveyfile}:${(ix+1)}: Missing modifier value at (+${matches[1]}=)`)
 				debug(`  modifier: ${matches[1]} = ${matches[2]}`)
 				const key = matches[1].toLowerCase()
 				const value = matches[2]
 				if (!modifiers[mode][key]) {
-					errs.push(`Error at line ${(ix+1)}: Invalid modifier [${l}] for mode [${mode}]`)
+					errs.push(`${surveyfile}:${(ix+1)}: Unexpected ${mode} modifier [${l}]`)
 				} else {
 					addModifier(matches[1],matches[2])
 				}
@@ -164,7 +166,10 @@ fs.readFile(surveyfile, 'utf8', (err, data) => {
       }
 		}
 	})
-	debug(errs)
+	if (errs.length === 0)
+		console.log("ok")
+	else
+		console.error(`Errors detected in file:${surveyfile}\n  ${errs.join("\n  ")}`)
 // Remove working data inside survey structure
 	delete survey.current	
 	fs.writeFileSync(outfile,JSON.stringify(survey,null,2)+';\n')

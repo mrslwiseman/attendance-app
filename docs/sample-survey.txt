@@ -18,6 +18,7 @@ List: bmw_cars
 	
 Section: About you
   +flow=inline
+  +info=Welcome to the Muggle's mentoring program. Please provide some information to help us match you with a suitable mentor/mentee
 
 Q name
   +prompt=My name is
