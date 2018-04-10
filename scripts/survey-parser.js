@@ -9,8 +9,9 @@ var opts = require('minimist')(process.argv.slice(2))
 
 const debug = require('debug')('survey:parser')
 
+// TODO: Can't use local file system dirs at run time - work out where to put them, eg database?
 const surveyfile = opts._[0] || "docs/sample-survey.txt"
-const outfile = opts._[1] || "docs/sample-survey.js"
+const outfile = opts._[1] || "docs/sample-survey.json"
 
 const newSection = function(title) {
 	debug("newSection",title)
@@ -172,6 +173,6 @@ fs.readFile(surveyfile, 'utf8', (err, data) => {
 		console.error(`Errors detected in file:${surveyfile}\n  ${errs.join("\n  ")}`)
 // Remove working data inside survey structure
 	delete survey.current	
-	fs.writeFileSync(outfile,JSON.stringify(survey,null,2)+';\n')
+	// fs.writeFileSync(outfile,JSON.stringify(survey,null,2)+';\n')
 })
 
