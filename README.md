@@ -25,4 +25,4 @@ It's because the orientation of the image is stored in the meta data, and github
 Plan to re-implement initial start using this overlay as the basis for react componentry:
 ![the picture](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/ui-1-layout-component-markup.jpg)
 
-![modal confirmation](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/ui-1-layout-modal-component-markup.jpg)
+![modal confirmation](https://github.com/Back2bikes/attendance-app/blob/master/docs/UI%20Pics/ui-1-layout-modal-component-markup.jpg) 
