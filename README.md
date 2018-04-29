@@ -1,4 +1,6 @@
-# attendance-app
+# Attendance-app
+A parallel project appears at https://github.com/back2bikes/attandance - built using create-react-app/webpack. Ideally we will maintain both projects so that we can compare the relative merits of the Meteor based technology and create-react-app.
+
 Workshop attendance app for back2bikes volunteers.
 
 This app's intention is to address this [Problem Statement](http://devblog.back2bikes.com.au:8080/blog/attendance/)
